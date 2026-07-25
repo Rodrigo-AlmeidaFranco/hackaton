@@ -18,7 +18,6 @@ BASE_DIR = Path(__file__).parent
 sys.path.insert(0, str(BASE_DIR))
 
 from src.model.detector import ArchitectureDetector
-from src.model.hybrid_detector import HybridDetector
 from src.stride.analyzer import StrideAnalyzer
 from src.report.generator import generate_report
 from src.vulnerabilities.database import STRIDE as STRIDE_CATS
@@ -155,16 +154,6 @@ def render_sidebar():
         confidence = st.slider(
             "Confiança de Detecção", min_value=0.1, max_value=0.9, value=0.20, step=0.05
         )
-        use_vision = st.toggle(
-            "Modo Híbrido (YOLOv8 + Llama Vision)",
-            value=False,
-            help="Usa llama3.2-vision para reclassificar cada componente detectado. "
-                 "Melhora a precisão em diagramas reais AWS/Azure. "
-                 "Requer: ollama pull llama3.2-vision",
-        )
-        if use_vision:
-            st.info("Modo híbrido ativo: YOLO localiza, Llama Vision classifica.")
-
         st.divider()
         st.markdown("""
 **Como usar:**
@@ -198,7 +187,6 @@ def render_sidebar():
         "ollama_model": ollama_model,
         "ollama_url": ollama_url,
         "openai_base_url": openai_base_url,
-        "use_vision": use_vision,
     }
 
 
@@ -386,15 +374,6 @@ def _load_detector(model_path: str, conf: float):
     return ArchitectureDetector(model_path=model_path, conf=conf)
 
 
-@st.cache_resource
-def _load_hybrid_detector(model_path: str, conf: float, ollama_url: str):
-    return HybridDetector(
-        model_path=model_path, conf=conf,
-        vision_model="llama3.2-vision",
-        ollama_url=ollama_url,
-        use_vision=True,
-    )
-
 
 # ── Main ────────────────────────────────────────────────────────────────────────
 
@@ -408,7 +387,6 @@ def main():
     ollama_model   = cfg["ollama_model"]
     ollama_url     = cfg["ollama_url"]
     openai_base_url= cfg["openai_base_url"]
-    use_vision     = cfg.get("use_vision", False)
 
     st.markdown('<p class="main-title">🛡 STRIDE AI Threat Modeler</p>', unsafe_allow_html=True)
     st.markdown(
@@ -453,14 +431,9 @@ def main():
             st.error(f"Por favor, informe a {BACKEND_INFO[backend]['key_label']} na barra lateral.")
             return
 
-        spinner_msg = ("Detectando componentes (YOLOv8 + Llama Vision)..."
-                       if use_vision else "Detectando componentes com YOLOv8...")
-        with st.spinner(spinner_msg):
+        with st.spinner("Detectando componentes com YOLOv8..."):
             try:
-                if use_vision:
-                    detector = _load_hybrid_detector(model_path, confidence, ollama_url)
-                else:
-                    detector = _load_detector(model_path, confidence)
+                detector = _load_detector(model_path, confidence)
                 detection_result = detector.detect(image)
             except Exception as e:
                 st.error(f"Detecção falhou: {e}")
