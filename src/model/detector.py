@@ -11,7 +11,7 @@ import numpy as np
 from PIL import Image
 from ultralytics import YOLO
 
-from src.dataset.generator import COMPONENT_CLASSES
+from src.dataset.generator import COMPONENT_CLASSES, COMPONENT_CLASSES_V2
 
 
 @dataclass
@@ -70,6 +70,8 @@ class ArchitectureDetector:
             )
         self.model = YOLO(path)
         self.conf = conf
+        nc = len(self.model.names)
+        self._class_names = COMPONENT_CLASSES_V2 if nc == len(COMPONENT_CLASSES_V2) else COMPONENT_CLASSES
 
     def detect(self, image_input) -> DetectionResult:
         """
@@ -103,7 +105,7 @@ class ArchitectureDetector:
                 cy = (y0 + y1) // 2
                 detections.append(Detection(
                     class_id=class_id,
-                    class_name=COMPONENT_CLASSES[class_id],
+                    class_name=self._class_names[class_id],
                     confidence=confidence,
                     bbox=(x0, y0, x1, y1),
                     center=(cx, cy),

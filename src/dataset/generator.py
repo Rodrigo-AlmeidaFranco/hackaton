@@ -560,6 +560,52 @@ class ArchitectureDiagramGenerator:
                 f.write(f"{cls} {cx:.6f} {cy:.6f} {w:.6f} {h:.6f}\n")
 
 
+# ── v2: 111 cloud-service classes (AWS + Azure + GCP) ─────────────────────────
+
+COMPONENT_CLASSES_V2 = [
+    "api", "aws_amazon_api_gateway", "aws_amazon_cloudfront", "aws_amazon_cloudwatch",
+    "aws_amazon_dynamodb", "aws_amazon_ec2", "aws_amazon_ec2_auto_scaling",
+    "aws_amazon_elastic_block_store", "aws_amazon_elastic_container_service",
+    "aws_amazon_elastic_kubernetes_service", "aws_amazon_elasticache", "aws_amazon_rds",
+    "aws_amazon_redshift", "aws_amazon_route_53", "aws_amazon_simple_notification_service",
+    "aws_amazon_simple_queue_service", "aws_amazon_simple_storage_service",
+    "aws_amazon_virtual_private_cloud", "aws_application_load_balancer",
+    "aws_aurora_amazon_rds_instance", "aws_auto_scaling", "aws_autoscaling", "aws_backup",
+    "aws_cloud", "aws_cloud_trail", "aws_cloudformation", "aws_cloudformation_template",
+    "aws_cloudfront", "aws_cloudwatch", "aws_dynamodb_table", "aws_ec2_instance",
+    "aws_ec2_instances", "aws_elactic_file_system(nfs)_multi-az",
+    "aws_elastic_block_store_volume", "aws_elastic_container_service_container_2",
+    "aws_elastic_container_service_service", "aws_elastic_load_balancing",
+    "aws_elastic_load_balancing_application_load_balancer",
+    "aws_elastic_load_balancing_network_load_balancer", "aws_elasticache",
+    "aws_identity_access_management_role", "aws_identity_and_access_management",
+    "aws_key_management_service", "aws_lambda", "aws_lambda_lambda_function",
+    "aws_private_subnet", "aws_public_subnet", "aws_rds", "aws_region",
+    "aws_route_53_hosted_zone", "aws_simple_email_service",
+    "aws_simple_notification_service_topic", "aws_simple_queue_service_queue",
+    "aws_simple_storage_service_bucket", "aws_simple_storage_service_bucket_with_objects",
+    "aws_simple_storage_service_object", "aws_simple_storage_service_s3_standard",
+    "aws_virtual_private_cloud", "aws_vpc_virtual_private_cloud_vpc", "aws_waf",
+    "azure_api_management_services", "azure_app_services", "azure_application_insights",
+    "azure_container_instances", "azure_cosmos_db", "azure_data_factories",
+    "azure_databricks", "azure_devops", "azure_event_hubs", "azure_firewalls",
+    "azure_function_apps", "azure_key_vaults", "azure_kubernetes_services",
+    "azure_load_balancers", "azure_logic_apps", "azure_machine_learning",
+    "azure_machine_learning_studio_workspaces", "azure_monitor",
+    "azure_network_security_groups", "azure_openai", "azure_resource_groups",
+    "azure_services", "azure_sql", "azure_sql_database", "azure_sql_managed_instance",
+    "azure_sql_server", "azure_storage_accounts", "azure_synapse_analytics",
+    "azure_virtual_machine", "azure_virtual_networks", "azure_vm_scale_sets",
+    "developer_portal", "gcp_bigquery", "gcp_cloud_functions", "gcp_cloud_load_balancing",
+    "gcp_cloud_run", "gcp_cloud_sql", "gcp_cloud_storage", "gcp_compute_engine",
+    "gcp_google_kubernetes_engine", "gcp_identity_and_access_management", "gcp_pubsub",
+    "gcp_vertex_ai", "gcp_virtual_private_cloud", "logic_apps", "microsoft_entra",
+    "resource_group", "sass_services", "sei/sip", "solr", "user",
+]
+
+CLASS_TO_IDX_V2 = {c: i for i, c in enumerate(COMPONENT_CLASSES_V2)}
+
+
 if __name__ == "__main__":
     import sys
     out = sys.argv[1] if len(sys.argv) > 1 else "dataset"

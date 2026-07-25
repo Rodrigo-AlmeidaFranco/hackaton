@@ -21,7 +21,7 @@ from src.model.detector import ArchitectureDetector
 from src.model.hybrid_detector import HybridDetector
 from src.stride.analyzer import StrideAnalyzer
 from src.report.generator import generate_report
-from src.vulnerabilities.database import STRIDE as STRIDE_CATS, SEVERITY_COLORS as _SEV_C
+from src.vulnerabilities.database import STRIDE as STRIDE_CATS
 
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
