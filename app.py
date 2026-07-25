@@ -379,6 +379,23 @@ def render_pdf_download(analysis: dict, annotated_image_np):
             os.unlink(tmp_path)
 
 
+# ── Cached model loaders ────────────────────────────────────────────────────────
+
+@st.cache_resource
+def _load_detector(model_path: str, conf: float):
+    return ArchitectureDetector(model_path=model_path, conf=conf)
+
+
+@st.cache_resource
+def _load_hybrid_detector(model_path: str, conf: float, ollama_url: str):
+    return HybridDetector(
+        model_path=model_path, conf=conf,
+        vision_model="llama3.2-vision",
+        ollama_url=ollama_url,
+        use_vision=True,
+    )
+
+
 # ── Main ────────────────────────────────────────────────────────────────────────
 
 def main():
@@ -441,14 +458,9 @@ def main():
         with st.spinner(spinner_msg):
             try:
                 if use_vision:
-                    detector = HybridDetector(
-                        model_path=model_path, conf=confidence,
-                        vision_model="llama3.2-vision",
-                        ollama_url=ollama_url,
-                        use_vision=True,
-                    )
+                    detector = _load_hybrid_detector(model_path, confidence, ollama_url)
                 else:
-                    detector = ArchitectureDetector(model_path=model_path, conf=confidence)
+                    detector = _load_detector(model_path, confidence)
                 detection_result = detector.detect(image)
             except Exception as e:
                 st.error(f"Detecção falhou: {e}")

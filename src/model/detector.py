@@ -105,7 +105,7 @@ class ArchitectureDetector:
                 cy = (y0 + y1) // 2
                 detections.append(Detection(
                     class_id=class_id,
-                    class_name=self._class_names[class_id],
+                    class_name=self._class_names[class_id] if class_id < len(self._class_names) else f"unknown_{class_id}",
                     confidence=confidence,
                     bbox=(x0, y0, x1, y1),
                     center=(cx, cy),

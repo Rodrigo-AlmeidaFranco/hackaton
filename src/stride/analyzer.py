@@ -5,7 +5,9 @@ Supports: Anthropic Claude, Ollama (local), Groq, Google Gemini, OpenAI, rule-ba
 
 import json
 import os
+import re
 from typing import Dict, List, Optional
+from urllib.parse import urlparse
 
 from src.vulnerabilities.database import (
     STRIDE,
@@ -29,8 +31,18 @@ def _call_anthropic(prompt: str, api_key: str, model: str = "claude-sonnet-4-6")
     return msg.content[0].text
 
 
+def _validate_url(url: str) -> str:
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https"):
+        raise ValueError(f"URL inválida: scheme '{parsed.scheme}' não permitido. Use http ou https.")
+    if not parsed.hostname:
+        raise ValueError("URL inválida: hostname ausente.")
+    return url
+
+
 def _call_ollama(prompt: str, model: str = "llama3.2", base_url: str = "http://localhost:11434") -> str:
     import urllib.request
+    _validate_url(base_url)
     payload = json.dumps({
         "model": model,
         "prompt": prompt,
@@ -246,16 +258,13 @@ def _normalize_risk_level(value: str) -> str:
 
 def _parse_llm_response(raw: str) -> dict:
     raw = raw.strip()
-    if "```" in raw:
-        parts = raw.split("```")
-        for part in parts:
-            part = part.strip()
-            if part.startswith("json"):
-                part = part[4:]
-            try:
-                return json.loads(part.strip())
-            except Exception:
-                continue
+    # Try to extract the outermost JSON object via regex (handles text before/after)
+    match = re.search(r'\{.*\}', raw, re.DOTALL)
+    if match:
+        try:
+            return json.loads(match.group(0))
+        except Exception:
+            pass
     return json.loads(raw)
 
 
