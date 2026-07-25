@@ -18,6 +18,7 @@ BASE_DIR = Path(__file__).parent
 sys.path.insert(0, str(BASE_DIR))
 
 from src.model.detector import ArchitectureDetector
+from src.model.hybrid_detector import HybridDetector
 from src.stride.analyzer import StrideAnalyzer
 from src.report.generator import generate_report
 from src.vulnerabilities.database import STRIDE as STRIDE_CATS, SEVERITY_COLORS as _SEV_C
@@ -154,6 +155,15 @@ def render_sidebar():
         confidence = st.slider(
             "Confiança de Detecção", min_value=0.1, max_value=0.9, value=0.20, step=0.05
         )
+        use_vision = st.toggle(
+            "Modo Híbrido (YOLOv8 + Llama Vision)",
+            value=False,
+            help="Usa llama3.2-vision para reclassificar cada componente detectado. "
+                 "Melhora a precisão em diagramas reais AWS/Azure. "
+                 "Requer: ollama pull llama3.2-vision",
+        )
+        if use_vision:
+            st.info("Modo híbrido ativo: YOLO localiza, Llama Vision classifica.")
 
         st.divider()
         st.markdown("""
@@ -188,6 +198,7 @@ def render_sidebar():
         "ollama_model": ollama_model,
         "ollama_url": ollama_url,
         "openai_base_url": openai_base_url,
+        "use_vision": use_vision,
     }
 
 
@@ -380,6 +391,7 @@ def main():
     ollama_model   = cfg["ollama_model"]
     ollama_url     = cfg["ollama_url"]
     openai_base_url= cfg["openai_base_url"]
+    use_vision     = cfg.get("use_vision", False)
 
     st.markdown('<p class="main-title">🛡 STRIDE AI Threat Modeler</p>', unsafe_allow_html=True)
     st.markdown(
@@ -424,12 +436,22 @@ def main():
             st.error(f"Por favor, informe a {BACKEND_INFO[backend]['key_label']} na barra lateral.")
             return
 
-        with st.spinner("Detecting architecture components..."):
+        spinner_msg = ("Detectando componentes (YOLOv8 + Llama Vision)..."
+                       if use_vision else "Detectando componentes com YOLOv8...")
+        with st.spinner(spinner_msg):
             try:
-                detector = ArchitectureDetector(model_path=model_path, conf=confidence)
+                if use_vision:
+                    detector = HybridDetector(
+                        model_path=model_path, conf=confidence,
+                        vision_model="llama3.2-vision",
+                        ollama_url=ollama_url,
+                        use_vision=True,
+                    )
+                else:
+                    detector = ArchitectureDetector(model_path=model_path, conf=confidence)
                 detection_result = detector.detect(image)
             except Exception as e:
-                st.error(f"Detection failed: {e}")
+                st.error(f"Detecção falhou: {e}")
                 return
 
         if not detection_result.detections:
