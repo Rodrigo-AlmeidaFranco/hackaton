@@ -1,0 +1,28 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.so
+
+# Dataset images (grandes demais para git)
+dataset/images/
+dataset/labels/
+dataset/*.cache
+
+# Modelos treinados (usar Git LFS ou hospedar separado)
+models/
+runs/
+
+# Temporários
+*.tmp
+*.log
+.DS_Store
+
+# Ambiente
+.env
+*.pdf

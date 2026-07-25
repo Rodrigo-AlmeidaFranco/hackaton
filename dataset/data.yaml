@@ -1,0 +1,19 @@
+path: ../dataset
+train: images/train
+val: images/val
+test: images/test
+
+nc: 12
+names:
+  0: user
+  1: web_server
+  2: database
+  3: api_gateway
+  4: load_balancer
+  5: cache
+  6: firewall
+  7: cdn
+  8: message_queue
+  9: cloud_service
+  10: mobile_app
+  11: external_service
