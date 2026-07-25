@@ -133,6 +133,17 @@ gen.generate_dataset(n_train=300, n_val=60, n_test=40)
 | 8 | 0.995 | 0.980 | 0.991 | 1.000 |
 | 15 | 0.993 | 0.983 | 0.985 | 0.968 |
 
+## Arquiteturas de Avaliação
+
+O sistema foi testado com os diagramas oficiais do hackathon disponíveis em `examples/`:
+
+| Arquivo | Arquitetura | Componentes esperados |
+|---------|-------------|----------------------|
+| `examples/arquitetura1_aws.jpg` | AWS Multi-AZ (sa-east-1) | Users, CloudFront (CDN), WAF (Firewall), AWS Shield, 3x ALB (Load Balancer), EC2/SEI (Web Server), RDS Primary + Secondary (Database), ElastiCache (Cache), EFS, Solr |
+| `examples/arquitetura2_azure.jpg` | Azure API Management | User (Internet), Microsoft Entra (Cloud Service), API Gateway, Logic Apps (Cloud Service), Developer Portal (Web Server), Azure/SaaS/REST/SOAP (External Services) |
+
+> **Nota:** Os diagramas usam ícones reais AWS/Azure. Para melhor detecção recomenda-se ativar o **Modo Híbrido** (YOLOv8 + Llama Vision) na interface.
+
 ## Entregáveis
 
 - [x] Código-fonte completo no GitHub
@@ -142,5 +153,6 @@ gen.generate_dataset(n_train=300, n_val=60, n_test=40)
 - [x] Knowledge base de vulnerabilidades (12 componentes, 30+ ameaças, 150+ contramedidas)
 - [x] Interface web Streamlit
 - [x] Geração de relatório PDF profissional
-- [ ] Documentação de fluxo (este README)
+- [x] Documentação detalhando o fluxo (este README)
+- [x] Imagens de avaliação do hackathon (`examples/`)
 - [ ] Vídeo de apresentação (até 15 min)

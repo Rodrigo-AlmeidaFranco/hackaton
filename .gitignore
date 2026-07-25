@@ -26,3 +26,14 @@ runs/
 # Ambiente
 .env
 *.pdf
+
+# IDEs
+.idea/
+
+# YOLOv8 base weights (baixado automaticamente pelo ultralytics)
+yolov8n.pt
+yolov8s.pt
+yolov8m.pt
+
+# PyCharm sample
+main.py
