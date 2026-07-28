@@ -11,7 +11,7 @@ import numpy as np
 from PIL import Image
 from ultralytics import YOLO
 
-from src.dataset.generator import COMPONENT_CLASSES, COMPONENT_CLASSES_V2
+from src.dataset.generator import COMPONENT_CLASSES_V2
 
 
 @dataclass
@@ -58,7 +58,7 @@ class DetectionResult:
 
 
 class ArchitectureDetector:
-    DEFAULT_MODEL = "models/arch_detector/weights/best.pt"
+    DEFAULT_MODEL = "models/arch_detector_v2/weights/best.pt"
     CONF_THRESHOLD = 0.25
     IOU_THRESHOLD = 0.45
 
@@ -70,8 +70,7 @@ class ArchitectureDetector:
             )
         self.model = YOLO(path)
         self.conf = conf
-        nc = len(self.model.names)
-        self._class_names = COMPONENT_CLASSES_V2 if nc == len(COMPONENT_CLASSES_V2) else COMPONENT_CLASSES
+        self._class_names = COMPONENT_CLASSES_V2
 
     def detect(self, image_input) -> DetectionResult:
         """

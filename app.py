@@ -148,7 +148,7 @@ def render_sidebar():
         # ── Model path + confidence ────────────────────────────────────────
         model_path_input = st.text_input(
             "Caminho do Modelo YOLOv8",
-            value="models/arch_detector/weights/best.pt",
+            value="models/arch_detector_v2/weights/best.pt",
             help="Caminho para os pesos treinados",
         )
         confidence = st.slider(

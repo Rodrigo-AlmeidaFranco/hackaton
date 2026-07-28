@@ -25,17 +25,11 @@
   <rect x="40" y="184" width="880" height="110" rx="10" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
   <text x="56" y="208" font-size="13" font-weight="700" fill="#BF360C">VISÃO COMPUTACIONAL</text>
 
-  <!-- Model v1 -->
-  <rect x="80" y="216" width="350" height="66" rx="8" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5"/>
-  <text x="255" y="238" text-anchor="middle" font-size="13" font-weight="600" fill="#BF360C">Modelo v1 — 12 classes genéricas</text>
-  <text x="255" y="256" text-anchor="middle" font-size="11" fill="#E65100">Dataset sintético · 400 imagens · mAP50 = 0.995</text>
-  <text x="255" y="272" text-anchor="middle" font-size="11" fill="#FF8F00">user · web_server · database · firewall · cdn · …</text>
-
   <!-- Model v2 -->
-  <rect x="450" y="216" width="450" height="66" rx="8" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5"/>
-  <text x="675" y="238" text-anchor="middle" font-size="13" font-weight="600" fill="#BF360C">Modelo v2 — 111 classes AWS/Azure/GCP</text>
-  <text x="675" y="256" text-anchor="middle" font-size="11" fill="#E65100">Dataset real · 8.700 imagens · Transfer Learning</text>
-  <text x="675" y="272" text-anchor="middle" font-size="11" fill="#FF8F00">aws_lambda · azure_kubernetes · gcp_bigquery · …</text>
+  <rect x="80" y="216" width="820" height="66" rx="8" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5"/>
+  <text x="490" y="238" text-anchor="middle" font-size="13" font-weight="600" fill="#BF360C">Modelo YOLOv8 — 111 classes AWS / Azure / GCP</text>
+  <text x="490" y="256" text-anchor="middle" font-size="11" fill="#E65100">Dataset real · 8.700 imagens · Transfer Learning · mAP50 em evolução</text>
+  <text x="490" y="272" text-anchor="middle" font-size="11" fill="#FF8F00">aws_lambda · aws_rds · azure_kubernetes · azure_sql · gcp_bigquery · gcp_cloud_run · …</text>
 
   <!-- Arrow Layer 2 → 3 -->
   <line x1="480" y1="294" x2="480" y2="314" stroke="#78909C" stroke-width="2.5"/>
