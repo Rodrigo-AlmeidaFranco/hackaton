@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" width="800" height="700" font-family="Segoe UI, Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="800" height="700" fill="#F8F9FF" rx="16"/>
+  <text x="400" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#1A237E">Metodologia STRIDE</text>
+  <text x="400" y="66" text-anchor="middle" font-size="13" fill="#555">Framework de Threat Modeling — Microsoft</text>
+
+  <!-- Center circle -->
+  <circle cx="400" cy="380" r="70" fill="#1A237E" opacity="0.08" stroke="#1A237E" stroke-width="2"/>
+  <text x="400" y="372" text-anchor="middle" font-size="22" font-weight="800" fill="#1A237E">STRIDE</text>
+  <text x="400" y="392" text-anchor="middle" font-size="11" fill="#3949AB">Threat Modeling</text>
+
+  <!-- Connecting lines from center to each card -->
+  <line x1="400" y1="310" x2="400" y2="150" stroke="#1A237E" stroke-width="1.5" opacity="0.2"/>
+  <line x1="340" y1="340" x2="160" y2="245" stroke="#1A237E" stroke-width="1.5" opacity="0.2"/>
+  <line x1="340" y1="420" x2="160" y2="515" stroke="#1A237E" stroke-width="1.5" opacity="0.2"/>
+  <line x1="400" y1="450" x2="400" y2="610" stroke="#1A237E" stroke-width="1.5" opacity="0.2"/>
+  <line x1="460" y1="420" x2="640" y2="515" stroke="#1A237E" stroke-width="1.5" opacity="0.2"/>
+  <line x1="460" y1="340" x2="640" y2="245" stroke="#1A237E" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- ── S — Spoofing (top center) ── -->
+  <g transform="translate(280,90)">
+    <rect width="240" height="100" rx="12" fill="#E3F2FD" stroke="#1565C0" stroke-width="2.5"/>
+    <circle cx="34" cy="30" r="20" fill="#1565C0"/>
+    <text x="34" y="37" text-anchor="middle" font-size="20" font-weight="800" fill="white">S</text>
+    <text x="120" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#0D47A1">Spoofing</text>
+    <text x="120" y="48" text-anchor="middle" font-size="12" fill="#1565C0">Falsificação de identidade</text>
+    <text x="120" y="65" text-anchor="middle" font-size="11" fill="#5C6BC0">Autenticação · MFA · Certificados</text>
+    <text x="120" y="83" text-anchor="middle" font-size="11" fill="#7986CB">JWT · OAuth2 · Certificate Pinning</text>
+  </g>
+
+  <!-- ── T — Tampering (top left) ── -->
+  <g transform="translate(50,195)">
+    <rect width="240" height="100" rx="12" fill="#FFF3E0" stroke="#E65100" stroke-width="2.5"/>
+    <circle cx="34" cy="30" r="20" fill="#E65100"/>
+    <text x="34" y="37" text-anchor="middle" font-size="20" font-weight="800" fill="white">T</text>
+    <text x="120" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#BF360C">Tampering</text>
+    <text x="120" y="48" text-anchor="middle" font-size="12" fill="#E65100">Adulteração de dados</text>
+    <text x="120" y="65" text-anchor="middle" font-size="11" fill="#EF6C00">Integridade · HMAC · Assinaturas</text>
+    <text x="120" y="83" text-anchor="middle" font-size="11" fill="#FF8F00">SQL Injection · Input Validation</text>
+  </g>
+
+  <!-- ── R — Repudiation (bottom left) ── -->
+  <g transform="translate(50,465)">
+    <rect width="240" height="100" rx="12" fill="#F3E5F5" stroke="#6A1B9A" stroke-width="2.5"/>
+    <circle cx="34" cy="30" r="20" fill="#6A1B9A"/>
+    <text x="34" y="37" text-anchor="middle" font-size="20" font-weight="800" fill="white">R</text>
+    <text x="120" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#4A148C">Repudiation</text>
+    <text x="120" y="48" text-anchor="middle" font-size="12" fill="#6A1B9A">Negação de ações</text>
+    <text x="120" y="65" text-anchor="middle" font-size="11" fill="#7B1FA2">Auditoria · Logs imutáveis</text>
+    <text x="120" y="83" text-anchor="middle" font-size="11" fill="#8E24AA">CloudTrail · SIEM · Timestamping</text>
+  </g>
+
+  <!-- ── I — Information Disclosure (bottom center) ── -->
+  <g transform="translate(280,548)">
+    <rect width="240" height="100" rx="12" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2.5"/>
+    <circle cx="34" cy="30" r="20" fill="#2E7D32"/>
+    <text x="34" y="37" text-anchor="middle" font-size="20" font-weight="800" fill="white">I</text>
+    <text x="120" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1B5E20">Info Disclosure</text>
+    <text x="120" y="48" text-anchor="middle" font-size="12" fill="#2E7D32">Vazamento de informação</text>
+    <text x="120" y="65" text-anchor="middle" font-size="11" fill="#388E3C">Criptografia · TLS · Mascaramento</text>
+    <text x="120" y="83" text-anchor="middle" font-size="11" fill="#43A047">Secrets Manager · KMS · RBAC</text>
+  </g>
+
+  <!-- ── D — Denial of Service (bottom right) ── -->
+  <g transform="translate(510,465)">
+    <rect width="240" height="100" rx="12" fill="#FFEBEE" stroke="#B71C1C" stroke-width="2.5"/>
+    <circle cx="34" cy="30" r="20" fill="#B71C1C"/>
+    <text x="34" y="37" text-anchor="middle" font-size="20" font-weight="800" fill="white">D</text>
+    <text x="120" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#7F0000">Denial of Service</text>
+    <text x="120" y="48" text-anchor="middle" font-size="12" fill="#B71C1C">Indisponibilidade do serviço</text>
+    <text x="120" y="65" text-anchor="middle" font-size="11" fill="#C62828">Rate Limiting · WAF · Auto Scaling</text>
+    <text x="120" y="83" text-anchor="middle" font-size="11" fill="#D32F2F">DDoS Protection · Circuit Breaker</text>
+  </g>
+
+  <!-- ── E — Elevation of Privilege (top right) ── -->
+  <g transform="translate(510,195)">
+    <rect width="240" height="100" rx="12" fill="#FCE4EC" stroke="#880E4F" stroke-width="2.5"/>
+    <circle cx="34" cy="30" r="20" fill="#880E4F"/>
+    <text x="34" y="37" text-anchor="middle" font-size="20" font-weight="800" fill="white">E</text>
+    <text x="120" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#560027">Elevation of Privilege</text>
+    <text x="120" y="48" text-anchor="middle" font-size="12" fill="#880E4F">Escalada de privilégio</text>
+    <text x="120" y="65" text-anchor="middle" font-size="11" fill="#AD1457">RBAC · Least Privilege · IAM</text>
+    <text x="120" y="83" text-anchor="middle" font-size="11" fill="#C2185B">Zero Trust · Privilege Monitoring</text>
+  </g>
+
+  <!-- Footer -->
+  <rect x="40" y="660" width="720" height="24" rx="6" fill="#E8EAF6" stroke="#3949AB" stroke-width="1"/>
+  <text x="400" y="676" text-anchor="middle" font-size="11" fill="#283593">
+    Cada componente detectado é mapeado contra todas as 6 categorias da knowledge base
+  </text>
+
+</svg>

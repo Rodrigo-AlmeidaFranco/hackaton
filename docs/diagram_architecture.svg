@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="Segoe UI, Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="960" height="560" fill="#F8F9FF" rx="16"/>
+  <text x="480" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#1A237E">Arquitetura Técnica em Camadas</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       LAYER 1 — INPUT
+  ════════════════════════════════════════════════════════ -->
+  <rect x="40" y="60" width="880" height="90" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="2"/>
+  <text x="56" y="84" font-size="13" font-weight="700" fill="#0D47A1">ENTRADA</text>
+
+  <!-- Image upload box -->
+  <rect x="200" y="72" width="560" height="66" rx="8" fill="#BBDEFB" stroke="#1565C0" stroke-width="1.5"/>
+  <text x="480" y="98" text-anchor="middle" font-size="14" font-weight="600" fill="#0D47A1">Upload de Diagrama de Arquitetura</text>
+  <text x="480" y="118" text-anchor="middle" font-size="12" fill="#1565C0">Interface Web Streamlit  ·  PNG / JPG / BMP / WebP</text>
+
+  <!-- Arrow Layer 1 → 2 -->
+  <line x1="480" y1="150" x2="480" y2="170" stroke="#78909C" stroke-width="2.5"/>
+  <polygon points="473,170 480,184 487,170" fill="#78909C"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       LAYER 2 — VISION
+  ════════════════════════════════════════════════════════ -->
+  <rect x="40" y="184" width="880" height="110" rx="10" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+  <text x="56" y="208" font-size="13" font-weight="700" fill="#BF360C">VISÃO COMPUTACIONAL</text>
+
+  <!-- Model v1 -->
+  <rect x="80" y="216" width="350" height="66" rx="8" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5"/>
+  <text x="255" y="238" text-anchor="middle" font-size="13" font-weight="600" fill="#BF360C">Modelo v1 — 12 classes genéricas</text>
+  <text x="255" y="256" text-anchor="middle" font-size="11" fill="#E65100">Dataset sintético · 400 imagens · mAP50 = 0.995</text>
+  <text x="255" y="272" text-anchor="middle" font-size="11" fill="#FF8F00">user · web_server · database · firewall · cdn · …</text>
+
+  <!-- Model v2 -->
+  <rect x="450" y="216" width="450" height="66" rx="8" fill="#FFE0B2" stroke="#E65100" stroke-width="1.5"/>
+  <text x="675" y="238" text-anchor="middle" font-size="13" font-weight="600" fill="#BF360C">Modelo v2 — 111 classes AWS/Azure/GCP</text>
+  <text x="675" y="256" text-anchor="middle" font-size="11" fill="#E65100">Dataset real · 8.700 imagens · Transfer Learning</text>
+  <text x="675" y="272" text-anchor="middle" font-size="11" fill="#FF8F00">aws_lambda · azure_kubernetes · gcp_bigquery · …</text>
+
+  <!-- Arrow Layer 2 → 3 -->
+  <line x1="480" y1="294" x2="480" y2="314" stroke="#78909C" stroke-width="2.5"/>
+  <polygon points="473,314 480,328 487,314" fill="#78909C"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       LAYER 3 — INTELLIGENCE
+  ════════════════════════════════════════════════════════ -->
+  <rect x="40" y="328" width="880" height="130" rx="10" fill="#F3E5F5" stroke="#6A1B9A" stroke-width="2"/>
+  <text x="56" y="352" font-size="13" font-weight="700" fill="#4A148C">INTELIGÊNCIA — STRIDE ENGINE</text>
+
+  <!-- Knowledge Base -->
+  <rect x="80" y="360" width="270" height="84" rx="8" fill="#E1BEE7" stroke="#6A1B9A" stroke-width="1.5"/>
+  <text x="215" y="380" text-anchor="middle" font-size="13" font-weight="600" fill="#4A148C">Knowledge Base</text>
+  <text x="215" y="398" text-anchor="middle" font-size="11" fill="#6A1B9A">122 componentes mapeados</text>
+  <text x="215" y="414" text-anchor="middle" font-size="11" fill="#6A1B9A">400+ ameaças com CWE IDs</text>
+  <text x="215" y="430" text-anchor="middle" font-size="11" fill="#8E24AA">S · T · R · I · D · E</text>
+
+  <!-- LLM Backends -->
+  <rect x="370" y="360" width="530" height="84" rx="8" fill="#E1BEE7" stroke="#6A1B9A" stroke-width="1.5"/>
+  <text x="635" y="380" text-anchor="middle" font-size="13" font-weight="600" fill="#4A148C">Backends LLM (plugáveis)</text>
+  <!-- backend pills -->
+  <rect x="386" y="390" width="88" height="22" rx="11" fill="#6A1B9A"/>
+  <text x="430" y="406" text-anchor="middle" font-size="11" fill="white">Rule-Based</text>
+  <rect x="482" y="390" width="66" height="22" rx="11" fill="#00838F"/>
+  <text x="515" y="406" text-anchor="middle" font-size="11" fill="white">Ollama</text>
+  <rect x="556" y="390" width="52" height="22" rx="11" fill="#E65100"/>
+  <text x="582" y="406" text-anchor="middle" font-size="11" fill="white">Groq</text>
+  <rect x="616" y="390" width="68" height="22" rx="11" fill="#1A73E8"/>
+  <text x="650" y="406" text-anchor="middle" font-size="11" fill="white">Gemini</text>
+  <rect x="692" y="390" width="64" height="22" rx="11" fill="#10A37F"/>
+  <text x="724" y="406" text-anchor="middle" font-size="11" fill="white">OpenAI</text>
+  <rect x="764" y="390" width="72" height="22" rx="11" fill="#CC5500"/>
+  <text x="800" y="406" text-anchor="middle" font-size="11" fill="white">Claude</text>
+  <text x="635" y="432" text-anchor="middle" font-size="11" fill="#4A148C">Fallback automático para Rule-Based se LLM falhar</text>
+
+  <!-- Arrow Layer 3 → 4 -->
+  <line x1="480" y1="458" x2="480" y2="476" stroke="#78909C" stroke-width="2.5"/>
+  <polygon points="473,476 480,490 487,476" fill="#78909C"/>
+
+  <!-- ═══════════════════════════════════════════════════════
+       LAYER 4 — OUTPUT
+  ════════════════════════════════════════════════════════ -->
+  <rect x="40" y="490" width="880" height="52" rx="10" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="56" y="514" font-size="13" font-weight="700" fill="#1B5E20">SAÍDA</text>
+  <text x="480" y="508" text-anchor="middle" font-size="13" font-weight="600" fill="#1B5E20">Relatório PDF Profissional</text>
+  <text x="480" y="528" text-anchor="middle" font-size="12" fill="#2E7D32">Capa com nível de risco · Imagem anotada · Matriz STRIDE · CWEs · Recomendações priorizadas</text>
+
+</svg>
