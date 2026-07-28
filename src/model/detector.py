@@ -58,7 +58,7 @@ class DetectionResult:
 
 
 class ArchitectureDetector:
-    DEFAULT_MODEL = "models/arch_detector_v2/weights/best.pt"
+    DEFAULT_MODEL = "models/arch_detector/weights/best.pt"
     CONF_THRESHOLD = 0.25
     IOU_THRESHOLD = 0.45
 
